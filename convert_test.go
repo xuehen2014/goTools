@@ -23,3 +23,18 @@ func TestToString(t *testing.T) {
 		})
 	}
 }
+
+// go test -run=^$  -benchmem -bench ^BenchmarkGoPoolWithSpinLock$ .
+/*
+ * benchtime 表示时间或运行次数，比如 -benchtime=10s 表示基准测试运行 10 秒，-benchtime=100x 表示基准测试运行 100 次
+ * benchmem 统计内存分配情况
+ * cpuprofile CPU 性能剖析 -cpuprofile=cpu.out
+ * memprofile=$FILE 内存 性能剖析 -memprofile=mem.out
+ * blockprofile=$FILE 阻塞 性能剖析 blockprofile=block.out
+ *
+ */
+func Benchmark_ToString(b *testing.B) {
+	for i := 0; i < b.N; i++ { // b.N 表示测试用例运行的次数
+		ToString(123.2238)
+	}
+}

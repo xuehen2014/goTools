@@ -67,7 +67,7 @@ func Example() {
 	//发送数据
 	go func() {
 		for i := 1; i <= 1000; i++ {
-			worker := NewReportWorker()
+			worker := NewReportWorker(i)
 			consumePool.Producer(worker)
 		}
 		consumePool.CloseConsumeCh()
@@ -75,7 +75,7 @@ func Example() {
 	//读取结果数据
 	for res := range consumePool.ResultCh {
 		if errInfoList, ok := res.(*ReportErrResult); ok {
-			for _, row := range errInfoList.ErrorList {
+			for _ = range errInfoList.ErrorList {
 				// TODO
 			}
 		}
