@@ -1,3 +1,3 @@
-module github.com/xuehen2014/goTools
+module goTools
 
-go 1.17
+go 1.20
